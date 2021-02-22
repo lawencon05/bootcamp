@@ -1,0 +1,43 @@
+-- Auto deploy ke tomcat via maven
+--- 1) menambahkan pluginnya
+<build>
+		<plugins>
+			<plugin>
+				<groupId>org.apache.tomcat.maven</groupId>
+				<artifactId>tomcat7-maven-plugin</artifactId>
+				<version>2.2</version>
+				<configuration>
+					<url>http://127.0.0.1:8080/manager/text</url>
+					<server>TomcatServer</server>
+					<path>/psikotest2</path>
+					<warSourceDirectory>WebContent</warSourceDirectory>
+					<failOnMissingWebXml>false</failOnMissingWebXml>
+					<username>admin</username>
+					<password>boO@TcaMli@NOv2020</password>
+				</configuration>
+			</plugin>
+			<plugin>
+				<artifactId>maven-war-plugin</artifactId>
+				<!-- <version>3.2.3</version> -->
+				<configuration>
+					<url>http://127.0.0.1:8080/manager/text</url>
+					<server>TomcatServer</server>
+					<path>/psikotest2</path>
+					<warSourceDirectory>WebContent</warSourceDirectory>
+					<failOnMissingWebXml>false</failOnMissingWebXml>
+					<username>admin</username>
+					<password>boO@TcaMli@NOv2020</password>
+				</configuration>
+			</plugin>
+			<plugin>
+				<groupId>org.springframework.boot</groupId>
+				<artifactId>spring-boot-maven-plugin</artifactId>
+			</plugin>
+		</plugins>
+	</build>
+	
+--- 2) clean install di dalam pom parentnya
+mvn clean install -DskipTests
+
+--- 3) eksekusi mvn di dalam pom yang akan di deploy
+mvn tomcat7:deploy

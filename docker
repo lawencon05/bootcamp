@@ -1,0 +1,69 @@
+-- melihat semua images
+docker images
+
+-- melihat semua container 
+docker ps -a
+
+-- get image from docker hub
+docker pull {image:tag}
+
+-- create container from image
+docker create --name {container_name} -p {exposed_port}:{redirect_port} {image:tag}
+
+-- create container sekaligus download images yang belum pernah di pull
+docker run --name={container_name} -d {image:tag}
+
+-- start container
+docker start {container_name}
+
+-- stop container
+docker stop {container_name}
+
+-- remove container
+docker rm {container_name}
+
+-- masuk ke container shell
+docker exec -it {container_name} /bin/bash
+
+-- inspect container detail
+docker container inspect {container_name}
+
+-- remove image
+docker image rm {image:tag}
+
+-- build image baru
+docker build --tag {image:tag} {Dockerfile directory}
+
+-- membuat network untuk access antar docker container
+docker network create {network_name}
+
+-- mengkoneksikan container ke network
+docker network connect {network_name} {container_name}
+
+-- list network
+docker network ls
+
+-- membuat volume
+docker volume create {volume_name}
+
+-- start dan create all container dengan docker compose
+docker-compose up
+
+-- stop dan delete all container dengan docker compose
+docker-compose down
+
+-- start all container tanpa create dengan docker compose
+docker-compose start
+
+-- stop all container tanpa delete dengan docker compose
+docker-compse stop
+
+
+
+
+
+
+
+
+
+
